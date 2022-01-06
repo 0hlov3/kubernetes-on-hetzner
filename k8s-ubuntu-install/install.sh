@@ -97,7 +97,7 @@ sudo systemctl restart docker
 sudo sed -i~ /swap/d /etc/fstab
 
 sudo test -d /etc/systemd/system/kubelet.service.d || sudo mkdir /etc/systemd/system/kubelet.service.d
-sudo test -e etc/systemd/system/kubelet.service.d/20-hcloud.conf || sudo cat > etc/systemd/system/kubelet.service.d/20-hcloud.conf <<EOF
+sudo test -e /etc/systemd/system/kubelet.service.d/20-hcloud.conf || sudo cat > /etc/systemd/system/kubelet.service.d/20-hcloud.conf <<EOF
 [Service]
 Environment="KUBELET_EXTRA_ARGS=--cloud-provider=external"
 EOF
