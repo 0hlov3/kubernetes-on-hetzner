@@ -215,13 +215,14 @@ sudo -i
 If SSH is working like a charm, you can start and Configure the SSHD-Server.
 
 ## Configure SSH-Server  TO BE FINISHED
+Perform this step only if you are sure that the newly created user can really log in with key authentication.
 ```shell
 sed -i "s/PasswordAuthentication.*/PasswordAuthentication no/" /etc/ssh/sshd_config
 sed -i "s/#PermitEmptyPasswords.*/PermitEmptyPasswords no/" /etc/ssh/sshd_config
 sed -i "s/X11Forwarding.*/X11Forwarding no/" /etc/ssh/sshd_config
 sed -i "s/#ClientAliveInterval.*/ClientAliveInterval 300/" /etc/ssh/sshd_config
 sed -i "s/#MaxAuthTries.*/MaxAuthTries 3/" /etc/ssh/sshd_config
-
+sed -i "s/#prohibit-password.*/prohibit-password no/" /etc/ssh/sshd_config
 ```
 
 We are going to Create a Personal-User.  TO BE FINISHED
