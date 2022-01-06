@@ -160,7 +160,7 @@ kubeadm join 172.16.0.3:6443 --token REDACTED \
 ```
 
 ### Check the Nodes
-Back on Controller01 we can 
+Back on Controller01 we can get our KUBECONFIG with the following commands.
 
 ```shell
 mkdir -p $HOME/.kube
@@ -168,17 +168,26 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-## Install 
+and now Check if all of our Nodes joined the Cluster coreectly
+
+```shell
+~# kubectl get nodes -o wide
+NAME           STATUS   ROLES                  AGE    VERSION   INTERNAL-IP     EXTERNAL-IP       OS-IMAGE             KERNEL-VERSION     CONTAINER-RUNTIME
+controller01   NotReady control-plane,master   4d7h   v1.22.5   65.21.179.180                     Ubuntu 20.04.3 LTS   5.4.0-90-generic   docker://20.10.12
+node01         NotReady node                   4d7h   v1.22.5   95.217.158.134                    Ubuntu 20.04.3 LTS   5.4.0-90-generic   docker://20.10.12
+```
+
+## Install Hetzner hcloud-cloud-controller-manager
 [hcloud-cloud-controller-manager](https://github.com/hetznercloud/hcloud-cloud-controller-manager)
 
-## Install 
-[csi-driver](*_https://github.com/hetznercloud/csi-driver_*)*
+## Install Hetzner csi-driver
+[csi-driver](https://github.com/hetznercloud/csi-driver)
 
-## Install 
-[ingress-nginx](*_./ingress-nginx/README.md_*)*
+## Install ingress-nginx
+[ingress-nginx](./ingress-nginx/README.md)
 
-## Install 
-[cert-manager](*_./cert-manager/README.md_*)*
+## Install cert-manager
+[cert-manager](./cert-manager/README.md)
 
 
 ## Create Users on all Nodes TO BE FINISHED
@@ -193,11 +202,11 @@ sudo passwd testuser
 Logout of the Server and check if you can login with the new User.
 
 ```shell
-ssh-copy-id testuser@65.21.179.180
+ssh-copy-id testuser@$externalIPodServer
 ```
 
 ```shell
-ssh testuser@65.21.179.180
+ssh testuser@$externalIPodServer
 ```
 
 Check of your PublicKey is in the User Direcoty
@@ -225,14 +234,9 @@ sed -i "s/#MaxAuthTries.*/MaxAuthTries 3/" /etc/ssh/sshd_config
 sed -i "s/#prohibit-password.*/prohibit-password no/" /etc/ssh/sshd_config
 ```
 
-We are going to Create a Personal-User.  TO BE FINISHED
-
-```shell
-useradd -m --user-group -s /bin/bash -G sudo docker testuser
-```
-
-
-
 ## Helpful Links
-- [ ] [Generating a new SSH key and adding it to the ssh-agent - GitHub Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)]
-- [ ] 
+- [Generating a new SSH key and adding it to the ssh-agent - GitHub Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)]
+- 
+
+## Don‘t trust me
+The author does not assume liability for errors contained in or for damages arising from the use of the Information. 
