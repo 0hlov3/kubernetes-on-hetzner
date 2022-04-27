@@ -1,4 +1,6 @@
 # Install a Kubernetes-Cluster on Hetzner Cloud
+[Medium Article](https://faun.pub/install-a-kubernetes-cluster-on-hetzner-cloud-200d4fb6a423)
+
 Hetzner is in my opinion a very good hoster, where you can get everything from a high-performance web hosting, managed servers, cloud servers, dedicated root servers and colocation services from one Hand, they are also working hard to improve the products and they are currently ahead in terms of price-performance ratio.
 
 Since Hetzner has not been in the cloud business as long as other competitors, there are no managed databases or 1-click Kubernetes clusters yet, but the cloud tools and CLI tools work pretty well.
